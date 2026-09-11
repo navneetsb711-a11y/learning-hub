@@ -1,0 +1,21 @@
+uuid: 98c660c4-4744-4ec1-8a32-208c6f9b5a72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_type
+    - paragraphs.paragraphs_type.course_section
+  module:
+    - options
+id: paragraph.course_section.field_content_type
+field_name: field_content_type
+entity_type: paragraph
+bundle: course_section
+label: 'Content Type'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

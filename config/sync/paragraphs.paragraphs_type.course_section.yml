@@ -1,0 +1,10 @@
+uuid: 3b37fdb2-427d-4380-a875-20be34da9ae5
+langcode: en
+status: true
+dependencies: {  }
+id: course_section
+label: 'Course Section'
+icon_uuid: null
+icon_default: null
+description: 'A section of a course containing video, image, PDF, or text content.'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 96fa6435-6971-4670-b2dd-0abe8f8242ad
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: learning_hub_search_form_wide
+theme: learning_hub
+region: secondary_menu
+weight: -8
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

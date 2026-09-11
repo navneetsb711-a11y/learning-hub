@@ -1,0 +1,29 @@
+uuid: 14b5514c-8ce9-4b0f-b0e6-132109bd4195
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video
+    - media.type.remote_video
+    - paragraphs.paragraphs_type.course_section
+id: paragraph.course_section.field_video
+field_name: field_video
+entity_type: paragraph
+bundle: course_section
+label: Video
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

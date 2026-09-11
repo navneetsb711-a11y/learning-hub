@@ -1,0 +1,20 @@
+uuid: 934a937f-a646-4a79-b74c-5e54d18d0dde
+langcode: en
+status: true
+dependencies:
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: learning_hub_primary_admin_actions
+theme: learning_hub
+region: highlighted
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

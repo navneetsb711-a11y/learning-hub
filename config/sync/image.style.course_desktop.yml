@@ -1,0 +1,15 @@
+uuid: 995518a1-fb33-413a-b0be-17d0ce26bd1e
+langcode: en
+status: true
+dependencies: {  }
+name: course_desktop
+label: 'Course Desktop'
+effects:
+  97850ee7-0888-4a18-a1b7-9fea2f459fdb:
+    uuid: 97850ee7-0888-4a18-a1b7-9fea2f459fdb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 750
+      anchor: center-center

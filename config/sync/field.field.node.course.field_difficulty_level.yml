@@ -1,0 +1,21 @@
+uuid: 2c231f70-1dc6-47cd-9766-9f00c5de8b26
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_difficulty_level
+    - node.type.course
+  module:
+    - options
+id: node.course.field_difficulty_level
+field_name: field_difficulty_level
+entity_type: node
+bundle: course
+label: 'Difficulty Level'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

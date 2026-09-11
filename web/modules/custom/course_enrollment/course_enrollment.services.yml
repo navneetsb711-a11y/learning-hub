@@ -1,0 +1,16 @@
+services:
+  course_enrollment.manager:
+    class: Drupal\course_enrollment\Service\EnrollmentManager
+    arguments:
+      - '@entity_type.manager'
+      - '@datetime.time'
+      - '@event_dispatcher'
+
+  course_enrollment.event_subscriber:
+    class: Drupal\course_enrollment\EventSubscriber\CourseEnrollmentSubscriber
+    arguments:
+      - '@logger.factory'
+      - '@entity_type.manager'
+      - '@messenger'
+    tags:
+      - {name: event_subscriber}

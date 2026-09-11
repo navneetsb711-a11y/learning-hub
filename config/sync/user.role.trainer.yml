@@ -1,0 +1,22 @@
+uuid: 3cfe839f-909b-4dd0-86ec-7e01c34ff2ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.course
+    - rest.resource.course_enrollment_resource
+  module:
+    - block_content
+    - node
+    - rest
+id: trainer
+label: Trainer
+weight: 4
+is_admin: null
+permissions:
+  - 'access block library'
+  - 'access content overview'
+  - 'create course content'
+  - 'delete own course content'
+  - 'edit own course content'
+  - 'restful post course_enrollment_resource'

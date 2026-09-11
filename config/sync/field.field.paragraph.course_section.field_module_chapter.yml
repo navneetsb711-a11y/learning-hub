@@ -1,0 +1,29 @@
+uuid: 041cafd8-e16e-406c-abcf-8baea2efea55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_module_chapter
+    - paragraphs.paragraphs_type.course_section
+    - taxonomy.vocabulary.course_module_chapter
+id: paragraph.course_section.field_module_chapter
+field_name: field_module_chapter
+entity_type: paragraph
+bundle: course_section
+label: 'Module / Chapter'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      course_module_chapter: course_module_chapter
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

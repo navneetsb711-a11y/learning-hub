@@ -1,0 +1,9 @@
+uuid: c9c65aec-beea-4ae6-9ba7-9dc4a3810f5b
+langcode: en
+status: true
+dependencies: {  }
+name: 'Course Category'
+vid: course_category
+description: 'Categories used to organize courses.'
+weight: 0
+new_revision: false

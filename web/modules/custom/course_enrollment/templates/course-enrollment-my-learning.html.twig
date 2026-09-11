@@ -1,0 +1,100 @@
+<div class="learning-dashboard">
+
+  <section class="learning-dashboard__welcome">
+
+    <h1>
+      {{ 'Welcome, @name'|t({
+        '@name': username
+      }) }}
+    </h1>
+
+    <p>
+      {{ 'Continue your learning journey and track your course progress.'|t }}
+    </p>
+
+  </section>
+
+  <section class="learning-dashboard__stats">
+
+    <div class="learning-stat">
+      <span class="learning-stat__number">
+        {{ total }}
+      </span>
+
+      <span class="learning-stat__label">
+        {{ 'Enrolled'|t }}
+      </span>
+    </div>
+
+    <div class="learning-stat">
+      <span class="learning-stat__number">
+        {{ completed }}
+      </span>
+
+      <span class="learning-stat__label">
+        {{ 'Completed'|t }}
+      </span>
+    </div>
+
+
+    <div class="learning-stat">
+      <span class="learning-stat__number">
+        {{ in_progress }}
+      </span>
+
+      <span class="learning-stat__label">
+        {{ 'In Progress'|t }}
+      </span>
+    </div>
+
+  </section>
+
+
+  {% if continue_learning %}
+
+    <section class="learning-dashboard__section">
+
+      <h2>{{ 'Continue Learning'|t }}</h2>
+
+      <article class="continue-learning-card">
+
+        <div>
+          <h3>
+            {{ continue_learning.title }}
+          </h3>
+
+          <p>
+            {{ 'Continue where you left off.'|t }}
+          </p>
+        </div>
+
+        <a
+          href="{{ continue_learning.url }}"
+          class="continue-learning-card__button"
+        >
+          {{ 'Resume'|t }}
+        </a>
+
+      </article>
+
+    </section>
+
+  {% endif %}
+
+
+  <section class="learning-dashboard__section">
+
+    {{ progress_block }}
+
+  </section>
+
+
+  <section class="learning-dashboard__section">
+
+    <h2>{{ 'My Courses'|t }}</h2>
+
+    {{ enrolled_courses_block }}
+
+  </section>
+
+</div>

@@ -1,0 +1,15 @@
+uuid: 951d8342-18b5-4ddf-9e64-519c5f6d5f33
+langcode: en
+status: true
+dependencies: {  }
+name: course_tablet
+label: 'Course Tablet'
+effects:
+  55b3669b-3230-4158-bee3-5ee42a898ea0:
+    uuid: 55b3669b-3230-4158-bee3-5ee42a898ea0
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 500
+      anchor: center-center

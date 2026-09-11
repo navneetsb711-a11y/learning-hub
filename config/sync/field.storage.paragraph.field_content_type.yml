@@ -1,0 +1,33 @@
+uuid: d65fb06f-42a6-49fe-9494-d7d0c6364fed
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_content_type
+field_name: field_content_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: video_video|video
+      label: Video
+    -
+      value: image_image|image
+      label: Image
+    -
+      value: pdf_pdf|pdf
+      label: PDF
+    -
+      value: text_text|text
+      label: Text
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

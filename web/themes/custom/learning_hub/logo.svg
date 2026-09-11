@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" role="img" aria-labelledby="title desc">
+  <title id="title">Learning Hub logo</title>
+  <desc id="desc">An open book and graduation cap icon followed by the words Learning Hub.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <rect width="150" height="150" rx="30" fill="url(#blue)"/>
+  <path d="M28 54c22-8 41-5 47 8v49c-9-11-27-14-47-7V54Zm94 0c-22-8-41-5-47 8v49c9-11 27-14 47-7V54Z" fill="#fff"/>
+  <path d="M76 30 111 43 76 56 41 43 76 30Zm-20 21v13c0 7 40 7 40 0V51" fill="#fbbf24" stroke="#fbbf24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M111 43v19" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="111" cy="65" r="4" fill="#fbbf24"/>
+  <text x="178" y="77" fill="#172554" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" letter-spacing="-1">Learning</text>
+  <text x="178" y="120" fill="#4f46e5" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" letter-spacing="3">HUB</text>
+</svg>

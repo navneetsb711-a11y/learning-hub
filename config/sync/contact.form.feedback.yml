@@ -1,0 +1,14 @@
+uuid: c854bbcc-c72c-4ef2-8c77-69c6f3a4997d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - navneetsb711@gmail.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

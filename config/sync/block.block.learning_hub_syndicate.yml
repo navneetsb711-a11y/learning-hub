@@ -1,0 +1,23 @@
+uuid: 23e5ded5-91d8-485e-98b8-5ff36c97caaf
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: learning_hub_syndicate
+theme: learning_hub
+region: header
+weight: -5
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

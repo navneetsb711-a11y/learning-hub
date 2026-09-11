@@ -1,0 +1,51 @@
+<article{{ attributes.addClass('course-card') }}>
+
+  <a href="{{ url }}" class="course-card__image">
+    {{ content.field_course_image }}
+  </a>
+
+  <div class="course-card__content">
+
+    <div class="course-card__meta">
+      {{ content.field_difficulty_level }}
+
+      {% if course_full %}
+        <span class="course-card__full">
+          {{ 'Full'|t }}
+        </span>
+      {% endif %}
+    </div>
+
+    <h2{{ title_attributes.addClass('course-card__title') }}>
+      <a href="{{ url }}">
+        {{ label }}
+      </a>
+    </h2>
+
+    {% if content.field_category %}
+      <div class="course-card__category">
+        {{ content.field_category }}
+      </div>
+    {% endif %}
+
+    <div class="course-card__enrollment">
+      {{ '@count enrolled'|t({
+        '@count': enrollment_count
+      }) }}
+    </div>
+
+    {% if seats_left is not null %}
+      <div class="course-card__seats">
+        {{ '@count seats remaining'|t({
+          '@count': seats_left
+        }) }}
+      </div>
+    {% endif %}
+
+    <a href="{{ url }}" class="course-card__link">
+      {{ 'View course'|t }}
+    </a>
+
+  </div>
+
+</article>

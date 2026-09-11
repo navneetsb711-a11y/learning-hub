@@ -1,0 +1,8 @@
+uuid: e77104b7-f04c-42d7-b98f-654a896027b4
+langcode: en
+status: true
+dependencies: {  }
+id: trainer-menu
+label: 'Trainer menu'
+description: ''
+locked: false

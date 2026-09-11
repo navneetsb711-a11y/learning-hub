@@ -1,0 +1,30 @@
+uuid: 35e238aa-8f27-4994-8f00-a35bd537407e
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.course_desktop
+    - image.style.course_tablet
+    - image.style.course_thumbnail
+  theme:
+    - learning_hub
+id: course_responsive_image
+label: 'Course Responsive Image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: course_desktop
+    breakpoint_id: learning_hub.desktop
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: course_tablet
+    breakpoint_id: learning_hub.tablet
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: course_thumbnail
+    breakpoint_id: learning_hub.mobile
+    multiplier: 1x
+breakpoint_group: learning_hub
+fallback_image_style: course_thumbnail

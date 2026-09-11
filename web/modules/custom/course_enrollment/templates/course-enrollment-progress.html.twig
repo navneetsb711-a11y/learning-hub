@@ -1,0 +1,33 @@
+<div class="enrollment-progress">
+
+  <h2 class="enrollment-progress__title">
+    {{ 'Your Enrollment Progress'|t }}
+  </h2>
+
+  <p class="enrollment-progress__summary">
+    {{ '@completed of @total courses completed'|t({
+      '@completed': completed,
+      '@total': total
+    }) }}
+  </p>
+
+  <div
+    class="enrollment-progress__bar"
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="{{ percentage }}"
+  >
+
+    <div
+      class="enrollment-progress__fill"
+      style="width: {{ percentage }}%;"
+    ></div>
+
+  </div>
+
+  <div class="enrollment-progress__percentage">
+    {{ percentage }}%
+  </div>
+
+</div>

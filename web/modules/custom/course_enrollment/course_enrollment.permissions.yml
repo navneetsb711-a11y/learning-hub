@@ -1,0 +1,8 @@
+administer course enrollments:
+  title: 'Administer course enrollments'
+  description: 'View and manage all course enrollments.'
+  restrict access: true
+
+enroll in courses:
+  title: 'Enroll in courses'
+  description: 'Allow users to enroll in available courses.'

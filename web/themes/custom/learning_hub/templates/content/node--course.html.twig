@@ -1,0 +1,200 @@
+<article{{attributes.addClass('learning-hub-course')}}>
+
+	{{ title_prefix }}
+	{{ title_suffix }}
+
+	{% if page %}
+
+		<header class="course-hero">
+			<div class="course-hero__main">
+				<div class="course-hero__heading">
+					<h1 class="course-hero__title">
+						{{ label }}
+					</h1>
+					<div class="course-hero__meta">
+						{% if content.field_difficulty_level %}
+							<div class="course-hero__difficulty">
+								{{ content.field_difficulty_level }}
+							</div>
+						{% endif %}
+						{% if content.field_category %}
+							<div class="course-hero__category">
+								{{ content.field_category }}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="course-hero__enrollment">
+					<div class="course-enrollment-count">
+						{{ '@current / @capacity enrolled'|t({
+              '@current': enrollment_count,
+              '@capacity': node.field_capacity.value
+            }) }}
+					</div>
+					{% if seats_left is not null %}
+						<div class="course-seats-left">
+							{{ '@count seats remaining'|t({
+                '@count': seats_left
+              }) }}
+						</div>
+					{% endif %}
+					<div class="course-action">
+						{% if logged_in %}
+							{% if enrollment_status == 'completed' %}
+								<span class="course-status course-status--completed">
+									{{ 'Completed'|t }}
+									✅
+								</span>
+
+								<a class="course-feedback-button" href="{{ path('course_enrollment.feedback', { 'course': node.id }) }}">
+									{{ 'Give Feedback'|t }}
+								</a>
+
+							{% elseif enrollment_status == 'enrolled' %}
+
+								<a class="course-status course-status--enrolled" href="#course-sections">
+									{{ 'Continue Learning'|t }}
+								</a>
+
+								{% if complete_form %}
+									<div class="course-complete-form">
+										{{ complete_form }}
+									</div>
+								{% endif %}
+
+							{% elseif course_full %}
+
+								<span class="course-status course-status--full">
+									{{ 'Full'|t }}
+								</span>
+
+							{% else %}
+
+								<a class="course-enroll-button" href="{{ path('course_enrollment.enroll', { 'course': node.id }) }}">
+									{{ 'Enroll'|t }}
+								</a>
+
+							{% endif %}
+
+						{% else %}
+
+							<a class="course-login-button" href="{{ path('user.login') }}">
+								{{ 'Log in to enroll'|t }}
+							</a>
+
+						{% endif %}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</header>
+
+	{% else %}
+
+		<h2{{title_attributes}}>
+			<a href="{{ url }}">
+				{{ label }}
+			</a>
+		</h2>
+
+	{% endif %}
+
+	<div id="course-content" {{ content_attributes.addClass('course-content') }}>
+
+		{{ content|without(
+      'field_course_content',
+      'field_difficulty_level',
+      'field_category'
+    ) }}
+
+	</div>
+
+	{% if course_sections %}
+
+		<section id="course-sections" class="course-sections">
+
+			{% for module in course_sections %}
+
+				<section class="course-module">
+
+					<h2 class="course-module__title">
+						{{ module.title }}
+					</h2>
+
+					<div class="course-module__sections">
+
+						{% for section in module.sections %}
+
+							<article class="course-sectioncourse-section--{{ section.type }}">
+
+								<header class="course-section__header">
+
+									<span class="course-section__icon" aria-hidden="true">
+
+										{% if section.type == 'video' %}
+											▶
+										{% elseif section.type == 'image' %}
+											▣
+										{% elseif section.type == 'pdf' %}
+											📄
+										{% elseif section.type == 'text' %}
+											📝
+										{% endif %}
+
+									</span>
+
+									<h3 class="course-section__title">
+										{{ section.title }}
+									</h3>
+
+								</header>
+
+								<div class="course-section__content">
+
+									{% if section.type == 'video' and section.video %}
+
+										<div class="course-section__media course-section__media--video">
+											{{ section.video }}
+										</div>
+
+									{% elseif section.type == 'image' and section.image %}
+
+										<div class="course-section__media course-section__media--image">
+											{{ section.image }}
+										</div>
+
+									{% elseif section.type == 'pdf' and section.document %}
+
+										<div class="course-section__media course-section__media--document">
+											{{ section.document }}
+										</div>
+
+									{% elseif section.type == 'text' and section.body %}
+
+										<div class="course-section__text">
+											{{ section.body }}
+										</div>
+
+									{% endif %}
+
+								</div>
+
+							</article>
+
+						{% endfor %}
+
+					</div>
+
+				</section>
+
+			{% endfor %}
+
+		</section>
+
+	{% endif %}
+
+</article>

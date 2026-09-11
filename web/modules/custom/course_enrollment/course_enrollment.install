@@ -1,0 +1,64 @@
+<?php
+
+function course_enrollment_schema() {
+  $schema['course_feedback'] = [
+    'description' => 'Stores feedback submitted for courses.',
+    'fields' => [
+
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE, // uid can't be -ve
+        'not null' => TRUE,
+      ],
+
+      'course_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'rating' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+
+      'recommend' => [
+        'type' => 'int',
+        'size' => 'tiny', //Only a small number is required because this behaves like a Boolean value.
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+
+      'favorite_part' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => FALSE,
+      ],
+
+      'comments' => [
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+
+    ],
+
+    'primary key' => ['id'],
+
+    'indexes' => [            //Indexes help the database find records more quickly.
+      'uid' => ['uid'],  //This makes queries like this faster: Find all feedback submitted by User 7
+      'course_id' => ['course_id'],  //This makes queries like this faster: Find all feedback for Course 5
+    ],
+  ];
+
+  return $schema;
+}

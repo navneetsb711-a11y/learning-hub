@@ -1,0 +1,10 @@
+id: course_enrollment_resource
+plugin_id: course_enrollment_resource
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - basic_auth

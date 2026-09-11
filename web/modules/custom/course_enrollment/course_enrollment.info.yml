@@ -1,0 +1,11 @@
+name: Course Enrollment
+type: module
+description: 'Provides course enrollment and progress functionality for Learning Hub.'
+package: Learning Hub
+core_version_requirement: ^10
+
+dependencies:
+  - drupal:node
+  - drupal:user
+  - drupal:rest
+  - drupal:serialization

@@ -1,0 +1,9 @@
+uuid: 474e310f-5352-462f-9f4a-66194ede3fe7
+langcode: en
+status: true
+dependencies: {  }
+name: 'Course Module / Chapter'
+vid: course_module_chapter
+description: 'Modules or chapters used to organize sections inside a course.'
+weight: 0
+new_revision: false

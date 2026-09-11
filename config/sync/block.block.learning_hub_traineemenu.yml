@@ -1,0 +1,34 @@
+uuid: 4a761722-b9ba-4d5c-a9d4-5db75c16e432
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.my-learning
+  module:
+    - system
+    - user
+  theme:
+    - learning_hub
+id: learning_hub_traineemenu
+theme: learning_hub
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:my-learning'
+settings:
+  id: 'system_menu_block:my-learning'
+  label: 'Trainee menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator
+      trainee: trainee

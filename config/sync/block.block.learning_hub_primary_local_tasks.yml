@@ -1,0 +1,22 @@
+uuid: 27349c28-0910-40d0-a5c8-8623e517a5b4
+langcode: en
+status: true
+dependencies:
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: learning_hub_primary_local_tasks
+theme: learning_hub
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

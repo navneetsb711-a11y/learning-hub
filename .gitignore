@@ -1,0 +1,26 @@
+#composer dependencies
+/vendor/
+
+/web/core
+/web/modules/contrib
+/web/themes/contrib
+/web/profiles/contrib
+/web/libraries
+/web/sites/default/files
+
+/web/sites/default/settings.php
+
+
+# Database backups and archives
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+*.zip
+
+
+# IDE and operating-system files
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,28 @@
+uuid: a8c92e4a-6b95-477e-abb0-15e979058162
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - learning_hub
+id: learning_hub_languageswitcher
+theme: learning_hub
+region: secondary_menu
+weight: -6
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: Sprachumschalter
+  label_display: '0'
+  provider: language
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      en: en
+      de: de

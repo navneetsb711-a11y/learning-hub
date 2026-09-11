@@ -1,0 +1,48 @@
+course_enrollment.enroll:
+  path: '/course/{course}/enroll'
+  defaults:
+    _controller: '\Drupal\course_enrollment\Controller\EnrollmentController::enroll'
+    _title: 'Enroll'
+  requirements:
+    _permission: 'enroll in courses'
+    course: '\d+'
+  options:
+    parameters:
+      course:
+        type: entity:node
+
+
+course_enrollment.complete:
+  path: '/course/{course}/complete'
+  defaults:
+    _form: '\Drupal\course_enrollment\Form\CompleteCourseForm'
+    _title: 'Complete course'
+  requirements:
+    _permission: 'enroll in courses'
+    course: '\d+'
+  options:
+    parameters:
+      course:
+        type: entity:node
+
+
+course_enrollment.my_learning:
+  path: '/my-learning'
+  defaults:
+    _controller: '\Drupal\course_enrollment\Controller\MyLearningController::page'
+    _title: 'My Learning'
+  requirements:
+    _permission: 'enroll in courses'
+
+course_enrollment.feedback:
+  path: '/course/{course}/feedback'
+  defaults:
+    _form: '\Drupal\course_enrollment\Form\CourseFeedbackForm'
+    _title: 'Course feedback'
+  requirements:
+    _permission: 'enroll in courses'
+    course: '\d+'
+  options:
+    parameters:
+      course:
+        type: entity:node

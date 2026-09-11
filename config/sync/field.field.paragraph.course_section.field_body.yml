@@ -1,0 +1,19 @@
+uuid: 79a16447-9811-4bd5-b3e3-f2e72f77b0ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.course_section
+id: paragraph.course_section.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: course_section
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

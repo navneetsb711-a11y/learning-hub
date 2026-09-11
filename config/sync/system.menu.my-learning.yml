@@ -1,0 +1,8 @@
+uuid: d5688088-02d3-499b-8a35-879929bb30f9
+langcode: en
+status: true
+dependencies: {  }
+id: my-learning
+label: 'Trainee menu'
+description: ''
+locked: false

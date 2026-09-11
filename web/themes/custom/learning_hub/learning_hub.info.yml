@@ -1,0 +1,22 @@
+name: Learning Hub
+type: theme
+core_version_requirement: ^10
+description: Learning Hub Custom responsive theme for the Learning Hub platform.
+base theme: olivero
+package: 'Learining Hub'
+libraries:
+  - learning_hub/global-styling
+
+regions:
+  header: Header
+  primary_menu: Primary menu
+  secondary_menu: Secondary menu
+  hero: Hero
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content_above: Content above
+  content: Content
+  sidebar: Sidebar
+  content_below: Content below
+  footer_top: Footer top
+  footer_bottom: Footer bottom

@@ -1,0 +1,78 @@
+uuid: bba3a916-944b-4b70-9e1c-12e026bdd4da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_section.field_body
+    - field.field.paragraph.course_section.field_content_type
+    - field.field.paragraph.course_section.field_document
+    - field.field.paragraph.course_section.field_image
+    - field.field.paragraph.course_section.field_module_chapter
+    - field.field.paragraph.course_section.field_section_title
+    - field.field.paragraph.course_section.field_video
+    - paragraphs.paragraphs_type.course_section
+  module:
+    - options
+id: paragraph.course_section.default
+targetEntityType: paragraph
+bundle: course_section
+mode: default
+content:
+  field_body:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_content_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_document:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_module_chapter:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

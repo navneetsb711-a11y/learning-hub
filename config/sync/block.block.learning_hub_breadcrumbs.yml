@@ -1,0 +1,22 @@
+uuid: 47211561-7cdb-44ca-89a0-16cb1d448b96
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: learning_hub_breadcrumbs
+theme: learning_hub
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

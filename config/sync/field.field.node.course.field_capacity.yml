@@ -1,0 +1,25 @@
+uuid: 5cc3110b-5664-4e93-905f-c97a8ddd0166
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_capacity
+    - node.type.course
+id: node.course.field_capacity
+field_name: field_capacity
+entity_type: node
+bundle: course
+label: Capacity
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 30
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

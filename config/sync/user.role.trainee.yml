@@ -1,0 +1,16 @@
+uuid: f6348994-f54c-44e2-ab79-53c296fdf2ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - rest.resource.course_enrollment_resource
+  module:
+    - course_enrollment
+    - rest
+id: trainee
+label: Trainee
+weight: 5
+is_admin: null
+permissions:
+  - 'enroll in courses'
+  - 'restful post course_enrollment_resource'

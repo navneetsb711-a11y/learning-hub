@@ -1,0 +1,41 @@
+<article class="enrolled-course-card">
+
+  <div class="enrolled-course-card__header">
+
+    <h3 class="enrolled-course-card__title">
+      {{ fields.course_id.content }}
+    </h3>
+
+    <div class="enrolled-course-card__status">
+      {{ fields.status.content }}
+    </div>
+
+  </div>
+
+  <div class="enrolled-course-card__details">
+
+    <div class="enrolled-course-card__date">
+      <span class="enrolled-course-card__label">
+        {{ 'Enrolled on:'|t }}
+      </span>
+
+      <span class="enrolled-course-card__value">
+        {{ fields.enrolled_date.content }}
+      </span>
+    </div>
+
+    {% if fields.completed_date.content|striptags|trim %}
+      <div class="enrolled-course-card__date">
+        <span class="enrolled-course-card__label">
+          {{ 'Completed on:'|t }}
+        </span>
+
+        <span class="enrolled-course-card__value">
+          {{ fields.completed_date.content }}
+        </span>
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>

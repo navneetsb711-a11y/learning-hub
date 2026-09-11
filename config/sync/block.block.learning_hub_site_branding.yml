@@ -1,0 +1,25 @@
+uuid: 370d3f98-1b32-4075-9134-2e7d1ff3426d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - learning_hub
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: learning_hub_site_branding
+theme: learning_hub
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

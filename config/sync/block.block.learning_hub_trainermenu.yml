@@ -1,0 +1,34 @@
+uuid: 0ed141fa-c355-4db5-81c8-9d8c3b7e89e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.trainer-menu
+  module:
+    - system
+    - user
+  theme:
+    - learning_hub
+id: learning_hub_trainermenu
+theme: learning_hub
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:trainer-menu'
+settings:
+  id: 'system_menu_block:trainer-menu'
+  label: 'Trainer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      administrator: administrator
+      trainer: trainer

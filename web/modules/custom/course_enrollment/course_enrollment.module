@@ -1,0 +1,341 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+
+function course_enrollment_preprocess_node(array &$variables) {
+  $node = $variables['node'] ?? NULL;
+
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+
+  if ($node->bundle() !== 'course') {
+    return;
+  }
+
+  $manager = \Drupal::service('course_enrollment.manager');
+
+  $variables['enrollment_count'] = $manager->getEnrollmentCount($node);
+  $variables['course_full'] = $manager->isCourseFull($node);
+  $variables['seats_left'] = $manager->getSeatsLeft($node);
+
+  $variables['enrollment_status'] = NULL;
+
+  if (!\Drupal::currentUser()->isAnonymous()) {
+    $user = \Drupal::entityTypeManager()
+      ->getStorage('user')
+      ->load(\Drupal::currentUser()->id());
+
+    if ($user) {
+      $variables['enrollment_status'] =
+        $manager->getEnrollmentStatus($user, $node);
+    }
+  }
+
+  $variables['course_sections'] = [];
+
+  if (
+    !$node->hasField('field_course_content') ||
+    $node->get('field_course_content')->isEmpty()
+  ) {
+    return;
+  }
+
+  $media_view_builder = \Drupal::entityTypeManager()
+    ->getViewBuilder('media');
+
+  foreach ($node->get('field_course_content') as $item) {
+
+    /*
+     * Get referenced Course Section Paragraph.
+     */
+    $section = $item->entity;
+
+    if (!$section) {
+      continue;
+    }
+
+    $module_term = NULL;
+
+    if (
+      $section->hasField('field_module_chapter') &&
+      !$section->get('field_module_chapter')->isEmpty()
+    ) {
+      $module_term = $section
+        ->get('field_module_chapter')
+        ->entity;
+    }
+
+    if ($module_term) {
+
+      $module_id = (string) $module_term->id();
+
+      $module_name = $module_term->label();
+
+      $module_weight = (int) $module_term
+        ->get('weight')
+        ->value;
+    }
+    else {
+      $module_id = 'other';
+
+      $module_name = \Drupal::translation()
+        ->translate('Other');
+
+      $module_weight = 999;
+    }
+
+    $content_type = '';
+
+    if (
+      $section->hasField('field_content_type') &&
+      !$section->get('field_content_type')->isEmpty()
+    ) {
+      $content_type_field = $section->get('field_content_type');
+
+      $stored_value = $content_type_field->value;
+
+      $allowed_values = $content_type_field
+        ->getFieldDefinition()
+        ->getFieldStorageDefinition()
+        ->getSetting('allowed_values');
+
+      $content_type_label =
+        $allowed_values[$stored_value] ?? $stored_value;
+
+      $content_type = strtolower(
+        trim((string) $content_type_label)
+      );
+    }
+
+    if (!isset($variables['course_sections'][$module_id])) {
+      $variables['course_sections'][$module_id] = [
+        'title' => $module_name,
+        'weight' => $module_weight,
+        'sections' => [],
+      ];
+    }
+
+    $video_media = NULL;
+    $image_media = NULL;
+    $document_media = NULL;
+
+    if (
+      $section->hasField('field_video') &&
+      !$section->get('field_video')->isEmpty()
+    ) {
+      $video_media = $section
+        ->get('field_video')
+        ->entity;
+    }
+
+    if (
+      $section->hasField('field_image') &&
+      !$section->get('field_image')->isEmpty()
+    ) {
+      $image_media = $section
+        ->get('field_image')
+        ->entity;
+    }
+
+    if (
+      $section->hasField('field_document') &&
+      !$section->get('field_document')->isEmpty()
+    ) {
+      $document_media = $section
+        ->get('field_document')
+        ->entity;
+    }
+
+    $section_title = '';
+
+    if (
+      $section->hasField('field_section_title') &&
+      !$section->get('field_section_title')->isEmpty()
+    ) {
+      $section_title = $section
+        ->get('field_section_title')
+        ->value;
+    }
+
+    $body = NULL;
+
+    if (
+      $section->hasField('field_body') &&
+      !$section->get('field_body')->isEmpty()
+    ) {
+      $body = $section
+        ->get('field_body')
+        ->view([
+          'label' => 'hidden',
+        ]);
+    }
+
+    $variables['course_sections'][$module_id]['sections'][] = [
+      'title' => $section_title,
+
+      'type' => $content_type,
+
+      'video' => $video_media
+        ? $media_view_builder->view(
+          $video_media,
+          'default'
+        )
+        : NULL,
+
+      'image' => $image_media
+        ? $media_view_builder->view(
+          $image_media,
+          'default'
+        )
+        : NULL,
+
+      'document' => $document_media
+        ? $media_view_builder->view(
+          $document_media,
+          'default'
+        )
+        : NULL,
+
+      'body' => $body,
+    ];
+  }
+
+  uasort(
+    $variables['course_sections'],
+    function (array $a, array $b) {
+      return $a['weight'] <=> $b['weight'];
+    }
+  );
+
+
+  $variables['complete_form'] = NULL;
+
+  if ($user && $variables['enrollment_status'] === 'enrolled') {
+    $variables['complete_form'] = \Drupal::formBuilder()
+        ->getForm('\Drupal\course_enrollment\Form\CompleteCourseForm',$node);
+  }
+}
+
+function course_enrollment_node_view_alter(
+  array &$build,
+  NodeInterface $node,
+  $display,
+) {
+  if ($node->bundle() !== 'course') {
+    return;
+  }
+
+
+  $build['#cache']['contexts'][] = 'user';
+  $build['#cache']['tags'][] = 'enrollment_list';
+}
+
+function course_enrollment_theme($existing,$type,$theme,$path,) {
+  return [
+
+    /*
+     * My Learning dashboard.
+     */
+    'course_enrollment_my_learning' => [
+      'variables' => [
+        'username' => NULL,
+        'total' => 0,
+        'completed' => 0,
+        'in_progress' => 0,
+        'continue_learning' => NULL,
+        'progress_block' => NULL,
+        'enrolled_courses_block' => NULL,
+      ],
+    ],
+
+    'course_enrollment_progress' => [
+      'variables' => [
+        'completed' => 0,
+        'total' => 0,
+        'percentage' => 0,
+      ],
+    ],
+
+  ];
+}
+
+
+use Drupal\Core\Form\FormStateInterface;
+
+function course_enrollment_form_user_login_form_alter(
+  array &$form,
+  FormStateInterface $form_state,
+  $form_id
+) {
+
+  // Add our custom validator.
+  $form['#validate'][] = 'course_enrollment_login_validate';
+
+  // Add our custom submit handler after Drupal's normal login submit.
+  $form['#submit'][] = 'course_enrollment_login_redirect';
+}
+
+/**
+ * Custom validation for the Drupal login form.
+ */
+function course_enrollment_login_validate(
+  array &$form,
+  FormStateInterface $form_state
+) {
+
+  $username = trim((string) $form_state->getValue('name'));
+
+  if (strlen($username) < 3) {
+    $form_state->setErrorByName(
+      'name',
+      \Drupal::translation()->translate(
+        'The username must contain at least 3 characters.'
+      )
+    );
+  }
+}
+
+
+use Drupal\Core\Url;
+
+/**
+ * Redirects users after successful login based on role.
+ */
+function course_enrollment_login_redirect(
+  array &$form,
+  FormStateInterface $form_state
+) {
+
+  /*
+   * If validation/login failed, don't redirect.
+   */
+  if ($form_state->hasAnyErrors()) {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+
+  $roles = $account->getRoles();
+
+  /*
+   * Trainer → admin dashboard.
+   */
+  if (in_array('trainer', $roles, TRUE)) {
+    $form_state->setRedirectUrl(
+      Url::fromRoute('system.admin_content')
+    );
+
+    return;
+  }
+
+  /*
+   * Trainee → My Learning dashboard.
+   */
+  if (in_array('trainee', $roles, TRUE)) {
+    $form_state->setRedirect(
+      'course_enrollment.my_learning'
+    );
+  }
+}

@@ -1,0 +1,23 @@
+learning_hub.mobile:
+ label: Mobile
+ mediaQuery: "(min-width: 0px)"
+ weight: 0
+ multipliers:
+   - 1x
+ group: learning_hub
+
+learning_hub.tablet:
+ label: Tablet
+ mediaQuery: "(min-width: 768px)"
+ weight: 1
+ multipliers:
+   - 1x
+ group: learning_hub
+
+learning_hub.desktop:
+  label: Desktop
+  mediaQuery: "(min-width: 1200px)"
+  weight: 2
+  multipliers:
+    - 1x
+  group: learning_hub

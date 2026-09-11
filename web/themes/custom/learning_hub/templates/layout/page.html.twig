@@ -1,0 +1,69 @@
+<div class="learning-hub-page">
+
+	<header class="learning-hub-header">
+
+		<div class="learning-hub-header__branding">
+
+			<a href="{{ path('<front>') }}" class="learning-hub-brand">
+
+				<img src="{{ base_path ~ directory }}/logo.svg" alt="{{ 'Learning Hub logo'|t }}" class="learning-hub-brand__logo">
+
+			</a>
+
+		</div>
+
+		<button class="learning-hub-menu-toggle" type="button" aria-expanded="false" aria-controls="learning-hub-navigation">
+			☰
+			<span class="learning-hub-menu-toggle__text">
+				{{ 'Menu'|t }}
+			</span>
+		</button>
+
+		<div id="learning-hub-navigation" class="learning-hub-navigation">
+
+			<div class="learning-hub-navigation__panel">
+
+				{% if page.primary_menu %}
+					<nav class="learning-hub-navigation__primary">
+						{{ page.primary_menu }}
+					</nav>
+				{% endif %}
+
+				{% if page.secondary_menu %}
+					<nav class="learning-hub-navigation__secondary">
+						{{ page.secondary_menu }}
+					</nav>
+				{% endif %}
+
+			</div>
+
+		</div>
+
+	</header>
+
+	<main class="learning-hub-main">
+
+		{% if page.highlighted %}
+			<div class="learning-hub-highlighted">
+				{{ page.highlighted }}
+			</div>
+		{% endif %}
+
+		{% if page.breadcrumb %}
+			<div class="learning-hub-breadcrumb">
+				{{ page.breadcrumb }}
+			</div>
+		{% endif %}
+
+		<div class="learning-hub-content">
+			{{ page.content }}
+		</div>
+
+	</main>
+
+	<footer class="learning-hub-footer">
+		{{ page.footer_top }}
+		{{ page.footer_bottom }}
+	</footer>
+
+</div>

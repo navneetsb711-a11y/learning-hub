@@ -1,0 +1,14 @@
+uuid: 464ed8f0-5e95-4453-8441-67ad0b9bdc64
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.trainee
+  module:
+    - user
+id: user_remove_role_action.trainee
+label: 'Remove the Trainee role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: trainee

@@ -1,0 +1,5 @@
+course_enrollment.add:
+  route_name: entity.enrollment.add_form
+  title: 'Add enrollment'
+  appears_on:
+    - entity.enrollment.collection

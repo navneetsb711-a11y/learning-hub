@@ -1,0 +1,11 @@
+uuid: 272bd722-171f-453b-8d81-238dc8668257
+langcode: en
+status: true
+dependencies:
+  module:
+    - course_enrollment
+id: enrollment.token
+label: Token
+description: ''
+targetEntityType: enrollment
+cache: true
