@@ -509,3 +509,105 @@ body,
   }
 
 }
+
+
+/* Course feedback section. */
+.course-feedback {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 24px;
+  background-color: #f7f9fc;
+  border-radius: 12px;
+}
+
+.course-feedback > h2 {
+  margin: 0 0 24px;
+  color: #1d2d44;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+/* Individual feedback card. */
+.course-feedback__item {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dce3eb;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+.course-feedback__item:last-child {
+  margin-bottom: 0;
+}
+
+/* Rating and username row. */
+.course-feedback__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e8ed;
+}
+
+.course-feedback__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  color: #5d4300;
+  background-color: #fff3cd;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.course-feedback__user {
+  color: #344054;
+  font-size: 15px;
+}
+
+/* Feedback comment. */
+.course-feedback__comment {
+  color: #3d4652;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.course-feedback__comment p:last-child {
+  margin-bottom: 0;
+}
+
+/* No-feedback message. */
+.course-feedback + p {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 16px 20px;
+  color: #59636e;
+  background-color: #f7f9fc;
+  border-left: 4px solid #607d9d;
+}
+
+/* Mobile layout. */
+@media (max-width: 600px) {
+  .course-feedback {
+    margin-top: 28px;
+    padding: 16px;
+  }
+
+  .course-feedback > h2 {
+    font-size: 23px;
+  }
+
+  .course-feedback__item {
+    padding: 16px;
+  }
+
+  .course-feedback__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

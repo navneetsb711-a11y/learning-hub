@@ -14,3 +14,8 @@ services:
       - '@messenger'
     tags:
       - {name: event_subscriber}
+
+  course_enrollment.feedback_manager:
+      class: Drupal\course_enrollment\Service\CourseFeedbackManager
+      arguments:
+        - '@database'
