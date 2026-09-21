@@ -1,0 +1,35 @@
+{% if feedback_items %}
+  <section class="course-feedback">
+
+    <h2>{{ 'Course feedback'|t }}</h2>
+
+    {% for feedback in feedback_items %}
+      <article class="course-feedback__item">
+
+        <div class="course-feedback__header">
+
+          <div class="course-feedback__rating">
+            <strong>{{ 'Rating:'|t }}</strong>
+            {{ feedback.rating }}/5
+          </div>
+
+          <div class="course-feedback__user">
+            <strong>{{ 'User:'|t }}</strong>
+            {{ feedback.user_name }}
+          </div>
+
+        </div>
+
+        <div class="course-feedback__comment">
+          {{ feedback.comments }}
+        </div>
+
+      </article>
+    {% endfor %}
+
+  </section>
+{% else %}
+  <p class="course-feedback__empty">
+    {{ 'No feedback has been submitted for this course.'|t }}
+  </p>
+{% endif %}

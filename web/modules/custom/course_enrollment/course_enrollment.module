@@ -216,6 +216,24 @@ function course_enrollment_preprocess_node(array &$variables) {
     $variables['complete_form'] = \Drupal::formBuilder()
         ->getForm('\Drupal\course_enrollment\Form\CompleteCourseForm',$node);
   }
+
+
+  //course feedback data
+  $course_id = (int) $node->id();
+  $feedback_manager = \Drupal::service('course_enrollment.feedback_manager');
+  $feedback_items = $feedback_manager->getFeedbackByCourse($course_id);
+
+  $variables['course_feedback'] = [
+  '#theme' => 'course_feedback_list',
+  '#feedback_items' => $feedback_items,
+  '#cache' => [
+    'tags' => [
+      'course_feedback:course:' . $course_id,
+    ],
+  ],
+];
+
+
 }
 
 function course_enrollment_node_view_alter(
@@ -258,6 +276,12 @@ function course_enrollment_theme($existing,$type,$theme,$path,) {
       ],
     ],
 
+    'course_feedback_list' => [
+      'variables' => [
+        'feedback_items' => []
+        
+      ]
+    ]
   ];
 }
 
